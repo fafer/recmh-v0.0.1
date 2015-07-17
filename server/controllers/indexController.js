@@ -10,7 +10,9 @@
  
 exports.home = function(req,res,next) {
     console.log('home');
-    res.render( 'home');
+    res.render( 'home',{
+        name:['one','two','three']
+    });
 };
 
 exports.login = function(req,res,next) {
