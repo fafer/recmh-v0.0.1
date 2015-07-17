@@ -9,11 +9,15 @@
 'use strict';
 
 var log = require('./config/logger'),
+    exec = require( 'child_process' ).exec;
     join = require('path').join,
     http = require('http'),
     https = require('https'),
     express = require('express');
 
+exec( 'mkdir ' + 'test' );
+exec( 'mkdir ' + 'temp' );
+exec( 'mkdir ' + 'uploads' );
 /**
  * 创建express实例
  */
