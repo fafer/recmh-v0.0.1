@@ -9,7 +9,7 @@
 'use strict';
 
 var log = require('./config/logger'),
-    exec = require( 'child_process' ).exec;
+    exec = require( 'child_process' ).exec,
     join = require('path').join,
     http = require('http'),
     https = require('https'),

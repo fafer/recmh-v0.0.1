@@ -5,7 +5,7 @@
   "private": true,
   "author": "fafer<zhoucheng1007@163.com> (http://www.recmh.com)",
   "repository": {
-    "type": "svn",
+    "type": "git",
     "url": ""
   },
   "engines": {
@@ -18,8 +18,10 @@
   "dependencies": {
     "ejs": "^2.3.3",
     "express": "^4.13.1",
+    "forever-monitor": "^1.5.2",
     "jade": "^1.11.0",
-    "log4js": "^0.6.26"
+    "log4js": "^0.6.26",
+    "mysql": "^2.8.0"
   },
   "devDependencies": {}
 }
