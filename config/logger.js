@@ -5,7 +5,9 @@
  * Copyright 2015-2020 fafer
  * Released under the MIT license
  */
-var log4js = require('log4js');
+var log4js = require('log4js'),
+    exec = require( 'child_process' ).exec;
+
 log4js.configure({
     appenders: [
         {
@@ -13,7 +15,7 @@ log4js.configure({
             category: 'console'
         },
         {
-            type: 'express',
+            type: 'dateFile',
             filename: 'logs/express.log',
             pattern: '_yyyy-MM-dd',
             alwaysIncludePattern: false,
@@ -42,6 +44,8 @@ log4js.configure({
         app:'debug'
     }
 });
+
+exec( 'mkdir ' + 'logs' );
 
 exports.getLog = function(name) {
     var logger = log4js.getLogger(name);
