@@ -1,10 +1,13 @@
 /*!
- *  logger
+ *  
  * https://www.recmh.com
  *
  * Copyright 2015-2020 fafer
  * Released under the MIT license
  */
+
+'use strict';
+
 var log4js = require('log4js'),
     exec = require( 'child_process' ).exec;
 
@@ -50,6 +53,10 @@ exec( 'mkdir ' + 'logs' );
 exports.getLog = function(name) {
     var logger = log4js.getLogger(name);
     return logger;
+};
+
+exports.getDefault = function() {
+    return log4js.getLogger('app');
 };
 
 exports.use = function(app) {

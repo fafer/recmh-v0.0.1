@@ -1,11 +1,15 @@
 /*!
- *
+ *  
  * https://www.recmh.com
  *
  * Copyright 2015-2020 fafer
  * Released under the MIT license
  */
+
+'use strict';
+
 var log = require('./config/logger'),
+    join = require('path').join,
     http = require('http'),
     https = require('https'),
     express = require('express');
@@ -21,9 +25,15 @@ var app = express();
 log.use(app);
 
 /**
- * 静态路由
+ * 设置静态资源文件目录
  */
-app.use(express.static(__dirname + '/web'));
+app.use(express.static(join(__dirname,'web')));
+
+/**
+ * 设置模板资源文件目录，对应路由配置
+ */
+app.set( 'view engine', 'ejs' );
+app.set( 'views', join( __dirname, '/server/views' ) );
 
 /**
  * 设置模板引擎，express默认使用的jade
@@ -34,6 +44,11 @@ app.use(express.static(__dirname + '/web'));
  * 设置express使用EJS模板引擎
  */
 app.engine( 'ejs' , require( 'ejs' ).__express);
+
+/**
+ * 加载路由设置
+ */
+require('./server/router')(app);
 
 /**
  * express启动web服务
@@ -47,4 +62,4 @@ app.listen(3000);
 //https.createServer(options, app).listen(443);
 
 
-
+ 
