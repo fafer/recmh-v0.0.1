@@ -25,5 +25,3 @@ exports.logout = function(req,res,next) {
     console.log('logout')
     res.render( 'account/logout');
 };
-
- 

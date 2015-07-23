@@ -13,15 +13,23 @@
     <meta name="description" content="">
     <meta name="keyword" content="">
     <title></title>
+    <script type="text/javascript" src="/js/tmpl.js"></script>
+
+    <script type="text/html" id="user_tmpl">
+        <% for ( var i = 0; i < users.length; i++ ) { %>
+        <li><a href="<%=users[i].url%>"><%=users[i].name%></a></li>
+        <% } %>
+    </script>
+
 </head>
 <body>
-    <% if (name.length) { %>
-    <ul>
-        <% name.forEach(function(n){ %>
-        <li foo='<%= n + "'" %>'><%= n %></li>
-        <% }) %>
-    </ul>
-    <% } %>
-    <div id="result"></div>
+    <div id="results"></div>
+    <input type="button" value="load" onclick="newDoc()">
+    <script>
+        function newDoc()
+        {
+            window.location.assign("http://www.w3school.com.cn")
+        }
+    </script>
 </body>
 </html>
