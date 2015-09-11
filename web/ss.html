@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <title></title>
+</head>
+<body onhaschange="haschange()" onbeforeunload="haschange()">
+<p id="ss">adsada</p>
+<input type="button" value="add" onclick="add()"/>
+<div id="container"></div>
+<script src="/js/vendor/jquery-1.11.3.min.js"></script>
+<script>
+    function haschange() {
+        console.log($('body').html());
+        console.log('12121');
+    }
+    function add() {
+        $('#container').append('<p><a href="http://www.baidu.com">adsada</a></p>');
+        window.localStorage.cententTest = $('#container').html();
+    }
+
+    $(function() {
+        if(window.localStorage.cententTest) {
+            $('#container').html(window.localStorage.cententTest);
+        }
+        $('a').on('click',function(e) {
+            var href = $(this).attr('href');
+            window.location.href = href;
+            e.preventDefault();
+        });
+    })
+</script>
+</body>
+</html>

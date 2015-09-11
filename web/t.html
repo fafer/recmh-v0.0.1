@@ -13,23 +13,29 @@
     <meta name="description" content="">
     <meta name="keyword" content="">
     <title></title>
-    <script type="text/javascript" src="/js/tmpl.js"></script>
-
-    <script type="text/html" id="user_tmpl">
-        <% for ( var i = 0; i < users.length; i++ ) { %>
-        <li><a href="<%=users[i].url%>"><%=users[i].name%></a></li>
-        <% } %>
-    </script>
-
+    <style type="text/css">
+        * {
+            /*margin: 0px;*/
+            /*padding:0px;*/
+        }
+        .header {
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 14px;
+            background-color: #b6ecf7;
+            -moz-border-radius: 7px;
+            -ms-border-radius:7px;
+            -webkit-border-radius: 7px;
+            -o-border-radius:7px;
+            border-radius: 7px;
+        }
+    </style>
 </head>
 <body>
-    <div id="results"></div>
-    <input type="button" value="load" onclick="newDoc()">
-    <script>
-        function newDoc()
-        {
-            window.location.assign("http://www.w3school.com.cn")
-        }
-    </script>
+    <div class="header">
+        <span>标题</span>
+        <input id="fileupload" type="file" name="photo" accept='image/gif, image/jpeg, image/jpg, image/png'/>
+    </div>
 </body>
 </html>

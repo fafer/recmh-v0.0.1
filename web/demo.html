@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html style="width:100%">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="ion.rangeSlider-2.0.12/css/ion.rangeSlider.css">
+    <link type="text/css" rel="stylesheet" href="ion.rangeSlider-2.0.12/css/ion.rangeSlider.skinHTML5.css">
+    <script type="text/javascript" src="js/vendor/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="ion.rangeSlider-2.0.12/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+    <style>
+        * {
+            padding:0px;
+            margin:0px;
+        }
+
+        html,body {
+            width:100%;
+            height:100%;
+        }
+        .hide {
+            display:none;
+        }
+        table {
+            width:100%;
+            height:300px;
+        }
+        tr,td,th {
+            vertical-align:super;
+        }
+    </style>
+</head>
+<body>
+    <div id="ss" style="margin-left:30px;margin-right:30px;">
+        <div id="slider">
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td>中国</td>
+            <td>美国</td>
+        </tr>
+        <tr>
+            <td>中国1</td>
+            <td>美国22</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>中国33</td>
+            <td>美国444</td>
+        </tr>
+        <tr>
+            <td>中国331</td>
+            <td>美国2332</td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        $('body').on('click',function() {
+            $('#ss').removeClass('hide');
+        });
+
+        $("#slider").ionRangeSlider({
+            type: "double",
+            min: 0,
+            max: 3010,
+            from:10,
+            to:300,
+            grid: true,
+            grid_num: 6,
+            prettify:function(num) {
+                if(getValue(num/3000) > 3000) return "3000+";
+                return getValue(num/3000)
+            },
+            onFinish:function(obj) {
+                var from = getValue(obj.from/3000);
+                var to = getValue(obj.to/3000);
+                console.log(from,to);
+            }
+        });
+        function getValue(num) {
+            var start,ratio,startPercent,countPercent;
+            if(num <= 15/68) {
+                start = 0;
+                ratio = 30;
+                startPercent = 0;
+                countPercent = 15/68;
+            } else if(num <= (15+17)/68){
+                start = 30;
+                ratio = 170;
+                startPercent = 15/68;
+                countPercent = 17/68;
+            } else if(num <= (15+17+10)/68) {
+                start = 200;
+                ratio = 200;
+                startPercent = (15+17)/68;
+                countPercent = 10/68;
+            } else if(num <= (15+17+10+8)/68) {
+                start = 400;
+                ratio = 400;
+                startPercent = (15+17+10)/68;
+                countPercent = 8/68;
+            } else if(num <= (15+17+10+8+10)/68) {
+                start = 800;
+                ratio = 1000;
+                startPercent = (15+17+10+8)/68;
+                countPercent = 10/68;
+            } else if(num <= (15+17+10+8+10+7)/68) {
+                start = 1800;
+                ratio = 1200;
+                startPercent = (15+17+10+8+10)/68;
+                countPercent = 7/68;
+            } else {
+                start = 3000;
+                ratio = 10;
+                startPercent = (15+17+10+8+10+7)/68;
+                countPercent = 1/68;
+            }
+            return parseInt(start+ ratio * (num-startPercent)/countPercent,10);
+        }
+    </script>
+</body>
+</html>
