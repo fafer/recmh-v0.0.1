@@ -52,13 +52,17 @@ var commonUtil = {
         var reg = /^([a-zA-Z0-9\-_\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
         return this.regex(reg,email);
     },
+    //携程邮件格式检验
+    _isMail:function(email) {
+        return (/^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/).test(email);
+    },
     isUrl:function(url) {
         var reg = /^(http|https|ftp):\/\/[a-z0-9_.%?\-&\/=#+@:~]{3,}$/i;
         return this.regex(reg,url);
     },
     //检测是否为手机号
     isMobile:function ( mobile ) {
-        var reg = /^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$/;
+        var reg = /^1([3578]\d{9}|4\d{9})$/;
         return this.regex(reg,mobile);
     },
     //用户名检测 手机号或者邮箱
